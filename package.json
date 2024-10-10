@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-application-that-collects-data",
+  "version": "1.0.0",
+  "description": "A Node.js application to collect data from a form and display it back to the user.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
