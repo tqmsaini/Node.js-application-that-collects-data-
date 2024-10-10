@@ -1,0 +1,5 @@
+Node.js-application-that-collects-data/
+├── public/
+│   └── index.html
+├── app.js
+└── package.json
