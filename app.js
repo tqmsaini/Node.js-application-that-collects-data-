@@ -1,4 +1,3 @@
-// app.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -26,7 +25,7 @@ app.post('/submit', (req, res) => {
 
     // Read existing data
     fs.readFile('data.json', 'utf8', (err, jsonData) => {
-        if (err) {
+        if (err && err.code !== 'ENOENT') {
             console.error(err);
             return res.status(500).send('Error reading data file.');
         }
@@ -40,7 +39,15 @@ app.post('/submit', (req, res) => {
                 console.error(err);
                 return res.status(500).send('Error writing data file.');
             }
-            res.send('Data submitted successfully!');
+
+            // Send back the submitted data to the user
+            res.send(`
+                <h1>Data Submitted Successfully!</h1>
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Message:</strong> ${data.message}</p>
+                <a href="/">Go Back</a>
+            `);
         });
     });
 });
